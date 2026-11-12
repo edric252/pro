@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block title %}Sign in{% endblock %}{% block content %}
+<section class="auth-card"><div class="eyebrow">SECURE ACCESS PORTAL</div><h1>Good to see you.</h1><p class="muted">Sign in to continue to your workspace.</p>
+<form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><label>Username<input name="username" autocomplete="username" required autofocus></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="primary">Sign in <span>→</span></button></form>
+<p class="below">New here? <a href="{{ url_for('register') }}">Create an account</a></p></section>
+{% endblock %}

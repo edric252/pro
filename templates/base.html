@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}AccessHub{% endblock %} · AccessHub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/">Access<span>Hub</span></a>
+    {% if g.user %}<nav><a href="{{ url_for('dashboard') }}">Dashboard</a>{% if g.user.role == 'admin' %}<a href="{{ url_for('admin') }}">Admin</a>{% endif %}<form method="post" action="{{ url_for('logout') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="nav-button">Sign out</button></form></nav>{% endif %}
+  </header>
+  <main class="page">
+    {% for category, message in get_flashed_messages(with_categories=true) %}<div class="notice {{ category }}">{{ message }}</div>{% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer>AccessHub <span>·</span> Simple access, clearly managed.</footer>
+</body>
+</html>

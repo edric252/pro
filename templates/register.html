@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block title %}Create account{% endblock %}{% block content %}
+<section class="auth-card"><div class="eyebrow">GET STARTED</div><h1>Create your account.</h1><p class="muted">New accounts start with regular-user access.</p>
+<form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><label>Username<input name="username" minlength="3" maxlength="40" autocomplete="username" required autofocus></label><label>Password<input name="password" type="password" minlength="10" autocomplete="new-password" required><small>At least 10 characters.</small></label><button class="primary">Create account <span>→</span></button></form>
+<p class="below">Already have an account? <a href="{{ url_for('login') }}">Sign in</a></p></section>
+{% endblock %}
